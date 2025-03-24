@@ -1,9 +1,0 @@
-pass:  
-
-a7b53lTzBYT9NxXz
-
-mongodb+srv://rishiv903:5QXAdRh3YM90glAN@cluster0.zim7p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-
-
-
-mongodb+srv://rishiv903:a7b53lTzBYT9NxXz@cluster0.nybgq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
