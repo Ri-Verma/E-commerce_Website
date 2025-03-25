@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   
   margin: 0;
   place-items: center;
   background-color: #242424;
+  background-color: #1E3A8A; /* Tailwind blue-900 */
+  min-height: 100vh;
+  padding: 0;
+  overflow: scroll;
+  
+  
 }
 
 

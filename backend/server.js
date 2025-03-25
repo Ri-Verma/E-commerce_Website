@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";  // Import CORS
 import { connectDB } from "./config/db.js";
 import productRoutes from "./routes/product.route.js";
 
@@ -7,8 +8,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Allow JSON request body parsing
-app.use(express.json()); 
+app.use(cors({ origin: "http://localhost:5173" })); // Allow frontend access
+app.use(express.json()); // Allow JSON request body parsing
 
 app.use("/api/products", productRoutes);
 

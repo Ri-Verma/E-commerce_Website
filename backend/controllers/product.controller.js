@@ -1,85 +1,75 @@
 import Product from "../models/product.model.js";
 import mongoose from "mongoose";
 
-
-// get method
-export const getProducts = async(req, res)=>{
+// Get all products
+export const getProducts = async (req, res) => {
     try {
-        const product = await Product.find({});
-        res.status(201).json({sucess:true, data: product});
+        const products = await Product.find();
+        res.status(200).json({ success: true, data: products });
     } catch (error) {
-        console.log("error in featching product", error.message);
-        res.status(500).json({sucess: false, message: "Server Error"});
-        
+        console.error("Error fetching products:", error.message);
+        res.status(500).json({ success: false, message: "Server Error" });
     }
-}
+};
 
-//// creating a log 
-export const createProduct = async(req, res)=>{
-    const product = req.body; //user input
+// Create a new product
+export const createProduct = async (req, res) => {
+    const { name, price, image } = req.body;
 
-    if (!product.name || !product.price || !product.image) {
-        return res.status(400).json({sucess:false, message: "Provide all the details."});
+    if (!name || !price || !image) {
+        return res.status(400).json({ success: false, message: "Provide all required details." });
     }
 
-    const newProduct = new Product(product);
-
-    // saving the log
     try {
+        const newProduct = new Product({ name, price, image });
         await newProduct.save();
-        res.status(201).json({sucess:true, message: "The details have been saved."});
-
+        res.status(201).json({ success: true, message: "Product created successfully.", data: newProduct });
     } catch (error) {
-        console.error("Error in saving the product.", error.message);
-        res.status(500).json({sucess: false, message: "Server Error"});
-        
+        console.error("Error saving product:", error.message);
+        res.status(500).json({ success: false, message: "Server Error" });
     }
+};
 
-
-}
-
-/// update method
-export const updateProduct = async(req,res) =>{
-
-    const {id} = req.params;
-    console.log("id",id);
-    const product = req.body;
+// Update an existing product
+export const updateProduct = async (req, res) => {
+    const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({sucess:false, message: "Product not found"});
-        
+        return res.status(404).json({ success: false, message: "Invalid product ID" });
     }
 
     try {
-        const updateProduct = await Product.findByIdAndUpdate(id, product,{new:true});
+        const updatedProduct = await Product.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
 
-        res.status(200).json({sucess:true, message: "Product updated"});
+        if (!updatedProduct) {
+            return res.status(404).json({ success: false, message: "Product not found" });
+        }
+
+        res.status(200).json({ success: true, message: "Product updated successfully.", data: updatedProduct });
     } catch (error) {
-        console.log("error in updating product", error.message);
+        console.error("Error updating product:", error.message);
+        res.status(500).json({ success: false, message: "Server Error" });
     }
+};
 
-}
-
-// deleting the log
-export const deleteProduct =  async(req,res) =>{
-
-    const {id} = req.params;
-    console.log("id",id);
+// Delete a product
+export const deleteProduct = async (req, res) => {
+    const { id } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({sucess:false, message: "Product not found"});
-        
+        return res.status(404).json({ success: false, message: "Invalid product ID" });
     }
-    
+
     try {
-        await Product.findByIdAndDelete(id);
-        res.status(200).json({sucess:true, message: "Product deleted"});
+        const deletedProduct = await Product.findByIdAndDelete(id);
+
+        if (!deletedProduct) {
+            return res.status(404).json({ success: false, message: "Product not found" });
+        }
+
+        res.status(204).json({ success: true, message: "Product deleted successfully." });
     } catch (error) {
-        console.log("error in deleting product", error.message);
-        
-        res.status(400).json({sucess:false, message: "Server error"});
-
-        
+        console.error("Error deleting product:", error.message);
+        res.status(500).json({ success: false, message: "Server Error" });
     }
-
-}
+};
