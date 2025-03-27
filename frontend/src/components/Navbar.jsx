@@ -24,7 +24,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3 bg-white shadow-md z-50">
+    <nav className=" flex items-center justify-between px-6 py-3  blur-0 bg-blue-900 bg-opacity-50 backdrop-blur-md text-gray-200 shadow-md fixed top-0 left-0 w-full z-10">
 
       {/* Home Button (Logo) */}
       <a href="/" className="flex items-center">

@@ -4,12 +4,13 @@ import ProductCard from "./components/ProductCard";
 
 const App = () => {
   return (
-    <div className="App min-h-screen w-screen bg-blue-900"> {/* Ensures full coverage */}
+    /* Ensures full coverage */
+    <div className="App min-h-screen w-screen bg-black">
       <header>
-        <Navbar />
+        <Navbar className="bg-gray-800 bg-opacity-50 backdrop-blur-md text-gray-200 shadow-md fixed top-0 left-0 w-full z-10" />
       </header>
-      <main className="flex justify-center items-center min-h-screen"> {/* Centers content */}
-        <div className="container mx-auto p-4 mt-16"> {/* Adds padding */}
+      <main className="flex justify-center items-center min-h-screen"> 
+        <div className="container mx-auto p-4 mt-16">
           <ProductCard />
         </div>
       </main>

@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import cors from "cors";  // Import CORS
+import cors from "cors"; 
 import { connectDB } from "./config/db.js";
 import productRoutes from "./routes/product.route.js";
 
@@ -8,15 +8,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: "http://localhost:5173" })); // Allow frontend access
-app.use(express.json()); // Allow JSON request body parsing
+app.use(cors({ origin: "http://localhost:5173" })); 
+app.use(express.json()); 
 
 app.use("/api/products", productRoutes);
 
-// Connect DB before starting server
 const startServer = async () => {
     try {
-        await connectDB();  // Ensure database connection before starting server
+        await connectDB();
         console.log("Database connected");
 
         app.listen(PORT, () => {
@@ -25,7 +24,7 @@ const startServer = async () => {
 
     } catch (error) {
         console.error(`Database connection error: ${error.message}`);
-        process.exit(1); // Exit process with failure
+        process.exit(1);
     }
 };
 
