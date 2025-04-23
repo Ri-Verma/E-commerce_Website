@@ -4,22 +4,15 @@
 This is a fully functional e-commerce website built using the **MERN** stack (MongoDB, Express, React, Node.js). The project ensures seamless **end-to-end connectivity**, enabling users to browse products, add them to the cart, place orders, and manage their profiles across multiple devices.
 
 ## 🚀 Features
-- User Authentication (Signup/Login with JWT)
-- Product Listing and Details Page
+- Product Listing Page
 - Shopping Cart Functionality
-- Secure Payment Gateway Integration
-- Order History and Management
-- Admin Dashboard for Product & Order Management
 - Responsive Design for all devices
-- RESTful APIs for seamless backend communication
 
 ## 🛠️ Tech Stack
 - **Frontend**: React.js (with Redux for state management)
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB (Mongoose ORM)
-- **Authentication**: JSON Web Token (JWT)
 - **Hosting**: Express.js Server
-- **Payment Gateway**: (e.g., Stripe, Razorpay - optional)
 
 ## 🏗️ Installation & Setup
 
@@ -62,9 +55,6 @@ npm start
 cd frontend
 npm start
 ```
-
-### 5️⃣ Open in Browser
-Visit: [http://localhost:3000](http://localhost:3000)
 
 ## 🖥️ Deployment
 - **Frontend**: Can be deployed using **Vercel** or **Netlify**
