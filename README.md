@@ -5,7 +5,6 @@ This is a fully functional e-commerce website built using the **MERN** stack (Mo
 
 ## 🚀 Features
 - Product Listing Page
-- Shopping Cart Functionality
 - Responsive Design for all devices
 
 ## 🛠️ Tech Stack
